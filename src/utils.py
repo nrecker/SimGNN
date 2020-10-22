@@ -159,7 +159,7 @@ def get_ts():
     import datetime, pytz
     global tstamp
     if not tstamp:
-        tstamp = datetime.datetime.now(pytz.timezone('US/Pacific')).strftime('%Y-%m-%dT%H:%M:%S')
+        tstamp = datetime.datetime.now(pytz.timezone('US/Pacific')).strftime('%Y-%m-%dT%H_%M_%S')
     return tstamp
 
 
