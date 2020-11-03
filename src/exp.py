@@ -767,9 +767,9 @@ def get_ged_select_norm_str(r, qid, gid, norm):
     ged = r.dist_sim(qid, gid, norm=False)[1]
     norm_ged = r.dist_sim(qid, gid, norm=True)[1]
     if norm:
-        return '{:.2f}({})'.format(norm_ged, int(ged))
+        return '{:.2f}({})'.format(float(norm_ged), int(ged))
     else:
-        return '{}({:.2f})'.format(int(ged), norm_ged)
+        return '{}({:.2f})'.format(int(ged), float(norm_ged))
     # if norm:
     #     return '{:.2f} ({})'.format(norm_ged, ged)
     # else:
@@ -1424,17 +1424,17 @@ def comb_gt_rk(dataset, model, pred_r, eps_dir=None):
                                          ids_groundtruth[i][4],
                                          ids_groundtruth[i][7],
                                          ids_groundtruth[i][int(len(col_graphs) / 2)],
-                                         ids_groundtruth[i][-1:]])
+                                         ids_groundtruth[i][-1]])
             if dataset == 'aids700nef':
                 gids_rank = np.array([ids_rank[i][0], ids_rank[i][1],
                                   ids_rank[i][2], ids_rank[i][4],
                                   ids_rank[i][3], ids_rank[i][5],
                                   ids_rank[i][int(len(col_graphs) / 2)],
-                                  ids_rank[i][-1:]])
+                                  ids_rank[i][-1]])
             else:
                 gids_rank = np.concatenate([ids_rank[i][:6],
                                            [ids_rank[i][int(len(col_graphs) / 2)]],
-                                            ids_rank[i][-1:]])
+                                            ids_rank[i][-1]])
             gs_rank = [test_data.graphs[i]]
             gs_rank = gs_rank + [train_data.graphs[j] for j in gids_rank]
             gs_groundtruth = [test_data.graphs[i]]
